@@ -27,11 +27,14 @@ const MainGameIntentHandler = {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainGame';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const speakOutput = 'Main deck!';
+        
+        const res = await axios.get(BASE_URL);
+        const { lookup: deck, shuffledIds: levels } = res.data;
 
         return handlerInput.responseBuilder
-            .speak(speakOutput)
+            .speak(deck[levels[0][0]].question)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
             .getResponse();
     }
