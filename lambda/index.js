@@ -22,10 +22,10 @@ const LaunchRequestHandler = {
     }
 };
 
-const MainGameIntentHandler = {
+const MainDeckIntentHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainGame';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
     },
     async handle(handlerInput) {
         const speakOutput = 'Main deck!';
@@ -150,7 +150,7 @@ const ErrorHandler = {
 exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
-        MainGameIntentHandler,
+        MainDeckIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
