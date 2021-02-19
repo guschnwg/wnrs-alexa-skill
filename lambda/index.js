@@ -34,6 +34,7 @@ const MainDeckIntentHandler = {
         const { lookup: deck, shuffledIds: levels } = res.data;
         
         const state = {
+            running: true,
             currentLevel: 0,
             currentQuestionInLevel: 0,
         }
@@ -51,6 +52,23 @@ const MainDeckIntentHandler = {
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .reprompt(speakOutput)
+            .getResponse();
+    }
+};
+
+const AnswerIntentHandler = {
+    canHandle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    
+        return sessionAttributes.gameStarted
+            && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
+    },
+    handle(handlerInput) {
+        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer')
+
+        return handlerInput.responseBuilder
+            .speak(answer)
             .getResponse();
     }
 };
@@ -177,6 +195,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addRequestHandlers(
         LaunchRequestHandler,
         MainDeckIntentHandler,
+        AnswerIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
         FallbackIntentHandler,
