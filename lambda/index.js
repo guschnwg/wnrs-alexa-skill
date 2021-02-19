@@ -5,6 +5,7 @@
  * */
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
+const AWS = require('aws-sdk');
 
 const BASE_URL = "https://werenotreallystrangers.online/api/shuffle";
 
