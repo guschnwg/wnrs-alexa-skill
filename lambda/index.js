@@ -28,8 +28,6 @@ const MainDeckIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
     },
     async handle(handlerInput) {
-        const speakOutput = 'You are playing the main deck!';
-        
         const res = await axios.get(BASE_URL);
         const { lookup: deck, shuffledIds: levels } = res.data;
         
@@ -41,9 +39,12 @@ const MainDeckIntentHandler = {
         // handlerInput.attributesManager.setPersistentAttributes({ deck, levels, state });
         // await handlerInput.attributesManager.savePersistentAttributes();
 
+        const question = deck[levels[state.currentLevel][state.currentQuestionInLevel]].question;
+        const speakOutput = 'You are playing the main deck! ' + question;
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(deck[levels[state.currentLevel][state.currentQuestionInLevel]].question)
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
