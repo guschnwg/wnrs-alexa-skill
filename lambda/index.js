@@ -64,7 +64,7 @@ const AnswerIntentHandler = {
     
         return sessionAttributes.state.running
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
     },
     handle(handlerInput) {
         const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer')
