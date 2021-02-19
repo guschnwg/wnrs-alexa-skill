@@ -40,8 +40,8 @@ const MainDeckIntentHandler = {
             currentQuestionInLevel: 0,
         }
         
-        attributesManager.setPersistentAttributes({ deck, levels, state });
-        await attributesManager.savePersistentAttributes();
+        // attributesManager.setPersistentAttributes({ deck, levels, state });
+        // await attributesManager.savePersistentAttributes();
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
