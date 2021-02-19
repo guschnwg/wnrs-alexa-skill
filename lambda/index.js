@@ -32,10 +32,17 @@ const MainDeckIntentHandler = {
         
         const res = await axios.get(BASE_URL);
         const { lookup: deck, shuffledIds: levels } = res.data;
+        
+        const state = {
+            currentLevel: 0,
+            currentQuestionInLevel: 0,
+        }
+        
+        const attributesManager = handlerInput.attributesManager;
+        attributesManager.setPersistentAttributes({ deck, levels, state });
 
         return handlerInput.responseBuilder
-            .speak(deck[levels[0][0]].question)
-            //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
+            .speak(deck[levels[state.currentLevel][state.currentQuestionInLevel]].question)
             .getResponse();
     }
 };
