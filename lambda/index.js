@@ -60,7 +60,7 @@ const AnswerIntentHandler = {
     canHandle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     
-        return sessionAttributes.gameStarted
+        return sessionAttributes.state
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
     },
