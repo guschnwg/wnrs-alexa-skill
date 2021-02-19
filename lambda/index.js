@@ -45,7 +45,7 @@ const MainDeckIntentHandler = {
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(deck[levels[state.currentLevel][state.currentQuestionInLevel]].question)
+            // .reprompt(deck[levels[state.currentLevel][state.currentQuestionInLevel]].question)
             .getResponse();
     }
 };
