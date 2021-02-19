@@ -40,7 +40,7 @@ const MainDeckIntentHandler = {
         sessionAttributes.deck = deck;
         sessionAttributes.levels = levels;
         sessionAttributes.state = state;
-        handlerInput.attributesManager.setPersistentAttributes({ deck, levels, state });
+        handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         await handlerInput.attributesManager.savePersistentAttributes();
 
         const question = deck[levels[state.currentLevel][state.currentQuestionInLevel]].question;
