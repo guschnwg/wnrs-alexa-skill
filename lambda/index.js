@@ -155,12 +155,23 @@ const ErrorHandler = {
     }
 };
 
+function getPersistenceAdapter() {
+  // Determines persistence adapter to be used based on environment
+  const dynamoDBAdapter = require('ask-sdk-dynamodb-persistence-adapter');
+  return new dynamoDBAdapter.DynamoDbPersistenceAdapter({
+    tableName: process.env.DYNAMODB_PERSISTENCE_TABLE_NAME,
+    createTable: false,
+    dynamoDBClient: new AWS.DynamoDB({apiVersion: 'latest', region: process.env.DYNAMODB_PERSISTENCE_REGION})
+  });
+}
+
 /**
  * This handler acts as the entry point for your skill, routing all request and response
  * payloads to the handlers above. Make sure any new handlers or interceptors you've
  * defined are included below. The order matters - they're processed top to bottom 
  * */
 exports.handler = Alexa.SkillBuilders.custom()
+    .withPersistenceAdapter(getPersistenceAdapter())
     .addRequestHandlers(
         LaunchRequestHandler,
         MainDeckIntentHandler,
