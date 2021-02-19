@@ -6,6 +6,8 @@
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
 
+const BASE_URL = "https://werenotreallystrangers.online/api/shuffle";
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
