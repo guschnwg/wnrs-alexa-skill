@@ -3,9 +3,10 @@
  * Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
  * session persistence, api calls, and more.
  * */
+
+const AWS = require('aws-sdk');
 const Alexa = require('ask-sdk-core');
 const axios = require('axios').default;
-const AWS = require('aws-sdk');
 
 const BASE_URL = "https://werenotreallystrangers.online/api/shuffle";
 
