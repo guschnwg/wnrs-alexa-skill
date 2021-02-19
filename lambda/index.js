@@ -41,6 +41,7 @@ const MainDeckIntentHandler = {
         }
         
         attributesManager.setPersistentAttributes({ deck, levels, state });
+        await attributesManager.savePersistentAttributes();
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
