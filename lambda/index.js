@@ -46,7 +46,7 @@ const MainDeckIntentHandler = {
             state: "STARTED",
             currentLevel: 0,
             currentQuestionInLevel: 0,
-            currentQuestionId: levels[0][0]
+            currentQuestionId: levels[0][0],
             answers: [],
         };
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
@@ -76,8 +76,8 @@ const AnswerIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "ASKING_FOR_NEXT_QUESTION";
         sessionAttributes.answers.push({
-            questionId: ,
-            
+            questionId: currentQuestionId,
+            answer,
         });
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
