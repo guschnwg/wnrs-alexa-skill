@@ -74,6 +74,7 @@ const AnswerIntentHandler = {
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "ASKING_FOR_NEXT_QUESTION";
+        sessionAttributes.answers.push(answer);
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
