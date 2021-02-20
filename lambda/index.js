@@ -102,9 +102,11 @@ const YesIntentHandler = {
         sessionAttributes.currentQuestionId = sessionAttributes.levels[sessionAttributes.currentLevel][sessionAttributes.currentQuestionInLevel];
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
+        
+        const question = getQuestion(sessionAttributes.deck, sessionAttributes.currentQuestionId);
 
         return handlerInput.responseBuilder
-            .speak("Do you want to keep playing?")
+            .speak()
             .getResponse();
     }
 }
