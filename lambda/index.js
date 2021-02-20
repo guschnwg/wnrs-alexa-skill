@@ -48,7 +48,6 @@ const MainDeckIntentHandler = {
             currentQuestionInLevel: 0,
             answers: [],
         };
-
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
