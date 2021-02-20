@@ -85,7 +85,26 @@ const AnswerIntentHandler = {
     }
 };
 
-const ConfirmationIntentHandler = {
+const YesIntentHandler = {
+    canHandle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    
+        return sessionAttributes.state === "ASKING_FOR_NEXT_QUESTION"
+            && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
+    },
+    handle(handlerInput) {
+        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
+        
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        return handlerInput.responseBuilder
+            .speak("Do you want to keep playing?")
+            .getResponse();
+    }
+}
+
+const NoIntentHandler = {
     canHandle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     
