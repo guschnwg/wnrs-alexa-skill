@@ -93,8 +93,6 @@ const YesIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
     },
     async handle(handlerInput) {
-        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
-        
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "RUNNING";
         sessionAttributes.currentQuestionInLevel++;
