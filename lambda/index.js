@@ -10,7 +10,7 @@ const axios = require('axios').default;
 
 const BASE_URL = "https://werenotreallystrangers.online/api/shuffle";
 
-async function getQuestion(deck, level) {
+function getQuestion(deck, index) {
     return deck[index].question;
 }
 
