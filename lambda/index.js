@@ -90,7 +90,7 @@ const YesIntentHandler = {
     
         return sessionAttributes.state === "ASKING_FOR_NEXT_QUESTION"
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'YesIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
     },
     async handle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
@@ -116,7 +116,7 @@ const NoIntentHandler = {
     
         return sessionAttributes.state === "ASKING_FOR_NEXT_QUESTION"
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'NoIntent';
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.NoIntent';
     },
     handle(handlerInput) {
         return handlerInput.responseBuilder
