@@ -46,12 +46,13 @@ const MainDeckIntentHandler = {
             state: "STARTED",
             currentLevel: 0,
             currentQuestionInLevel: 0,
+            currentQuestionId: levels[0][0]
             answers: [],
         };
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
-        const question = getQuestion(deck, levels[state.currentLevel][state.currentQuestionInLevel]);
+        const question = getQuestion(deck, currentQuestionId);
         const speakOutput = 'You are playing the main deck! ' + question;
 
         return handlerInput.responseBuilder
@@ -74,7 +75,10 @@ const AnswerIntentHandler = {
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "ASKING_FOR_NEXT_QUESTION";
-        sessionAttributes.answers.push(answer);
+        sessionAttributes.answers.push({
+            questionId: ,
+            
+        });
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
