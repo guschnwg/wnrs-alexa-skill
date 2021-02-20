@@ -73,7 +73,7 @@ const AnswerIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         return handlerInput.responseBuilder
-            .speak(answer)
+            .speak("Do you want to keep playing?")
             .getResponse();
     }
 };
