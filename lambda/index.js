@@ -62,8 +62,6 @@ const MainDeckIntentHandler = {
 const AnswerIntentHandler = {
     canHandle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        
-        console.log({ sessionAttributes });
     
         return sessionAttributes.state.running
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
