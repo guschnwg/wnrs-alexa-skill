@@ -42,6 +42,7 @@ const MainDeckIntentHandler = {
             running: true,
             currentLevel: 0,
             currentQuestionInLevel: 0,
+            answers: [],
         }
 
         const sessionAttributes = { url, deck, levels, state };
@@ -68,6 +69,8 @@ const AnswerIntentHandler = {
     },
     handle(handlerInput) {
         const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
+        
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         return handlerInput.responseBuilder
             .speak(answer)
