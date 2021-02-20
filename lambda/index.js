@@ -118,7 +118,7 @@ const NoIntentHandler = {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
         return handlerInput.responseBuilder
-            .speak("Do you want to keep playing?")
+            .speak("Okay, come back later anytime!")
             .getResponse();
     }
 }
