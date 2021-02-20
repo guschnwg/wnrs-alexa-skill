@@ -79,7 +79,7 @@ const AnswerIntentHandler = {
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
         return handlerInput.responseBuilder
-            .speak("Do you want to keep playing?")
+            .speak("Do you want to keep playing? Yes or No")
             .getResponse();
     }
 };
