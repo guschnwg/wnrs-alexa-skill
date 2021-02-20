@@ -94,9 +94,11 @@ const YesIntentHandler = {
     },
     async handle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
         sessionAttributes.state = "RUNNING";
         sessionAttributes.currentQuestionInLevel++;
         sessionAttributes.currentQuestionId = sessionAttributes.levels[sessionAttributes.currentLevel][sessionAttributes.currentQuestionInLevel];
+
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
