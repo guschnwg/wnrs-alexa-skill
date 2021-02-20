@@ -113,10 +113,6 @@ const NoIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
     },
     handle(handlerInput) {
-        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
-        
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-
         return handlerInput.responseBuilder
             .speak("Okay, come back later anytime!")
             .getResponse();
