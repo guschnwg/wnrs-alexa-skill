@@ -66,7 +66,7 @@ const AnswerIntentHandler = {
     canHandle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     
-        return sessionAttributes.state.running
+        return sessionAttributes.state === "STARTED"
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
     },
