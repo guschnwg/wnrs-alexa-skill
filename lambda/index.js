@@ -42,7 +42,6 @@ const MainDeckIntentHandler = {
             url,
             deck,
             levels,
-            state,
             state: "STARTED",
             currentLevel: 0,
             currentQuestionInLevel: 0,
