@@ -89,8 +89,7 @@ const ConfirmationIntentHandler = {
     canHandle(handlerInput) {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
     
-        return
-            sessionAttributes.state === "ASKING_FOR_NEXT_QUESTION"
+        return sessionAttributes.state === "ASKING_FOR_NEXT_QUESTION"
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
     },
