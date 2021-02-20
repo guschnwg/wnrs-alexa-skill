@@ -97,7 +97,7 @@ const YesIntentHandler = {
         
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
-        sessionAttributes.state = "STARTED";
+        sessionAttributes.state = "RUNNING";
         sessionAttributes.answers.push({ questionId: sessionAttributes.currentQuestionId, answer });
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
