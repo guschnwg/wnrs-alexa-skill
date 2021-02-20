@@ -34,7 +34,7 @@ const MainDeckIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
     },
     async handle(handlerInput) {
-        const url = BASE_URL + "?q=" + Date.now();
+        const url = BASE_URL + "?s=" + Date.now();
         const res = await axios.get(url);
         const { lookup: deck, shuffledIds: levels } = res.data;
         
