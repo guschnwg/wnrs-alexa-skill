@@ -34,7 +34,8 @@ const MainDeckIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'MainDeckIntent';
     },
     async handle(handlerInput) {
-        const res = await axios.get(BASE_URL + "?q=" + Date.now());
+        const url = BASE_URL + "?q=" + Date.now();
+        const res = await axios.get(url);
         const { lookup: deck, shuffledIds: levels } = res.data;
         
         const state = {
@@ -43,7 +44,7 @@ const MainDeckIntentHandler = {
             currentQuestionInLevel: 0,
         }
 
-        const sessionAttributes = { deck, levels, state };
+        const sessionAttributes = { url, deck, levels, state };
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
