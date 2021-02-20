@@ -47,7 +47,7 @@ const MainDeckIntentHandler = {
         sessionAttributes.deck = deck;
         sessionAttributes.levels = levels;
         sessionAttributes.state = state;
-        handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
+        await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
         const question = getQuestion(deck, levels[state.currentLevel][state.currentQuestionInLevel]);
         const speakOutput = 'You are playing the main deck! ' + question;
