@@ -69,11 +69,13 @@ const AnswerIntentHandler = {
             && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
     },
-    handle(handlerInput) {
+    async handle(handlerInput) {
         const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
         
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "ASKING_FOR_NEXT_QUESTION";
+        handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
+        await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
         return handlerInput.responseBuilder
             .speak("Do you want to keep playing?")
