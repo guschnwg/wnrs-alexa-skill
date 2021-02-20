@@ -37,15 +37,18 @@ const MainDeckIntentHandler = {
         const url = BASE_URL + "?s=" + Date.now();
         const res = await axios.get(url);
         const { lookup: deck, shuffledIds: levels } = res.data;
-        
-        const state = {
-            running: true,
+
+        const sessionAttributes = {
+            url,
+            deck,
+            levels,
+            state,
+            state: "STARTED",
             currentLevel: 0,
             currentQuestionInLevel: 0,
             answers: [],
-        }
+        };
 
-        const sessionAttributes = { url, deck, levels, state };
         handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
         await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
         
@@ -77,6 +80,26 @@ const AnswerIntentHandler = {
             .getResponse();
     }
 };
+
+const ConfirmationIntentHandler = {
+    canHandle(handlerInput) {
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+    
+        return
+            
+            && Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.YesIntent';
+    },
+    handle(handlerInput) {
+        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
+        
+        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+
+        return handlerInput.responseBuilder
+            .speak("Do you want to keep playing?")
+            .getResponse();
+    }
+}
 
 const HelpIntentHandler = {
     canHandle(handlerInput) {
