@@ -95,7 +95,6 @@ const YesIntentHandler = {
     async handle(handlerInput) {
         const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
         
-        
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
         sessionAttributes.state = "RUNNING";
         sessionAttributes.currentQuestionInLevel++;
