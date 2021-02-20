@@ -106,7 +106,7 @@ const YesIntentHandler = {
         const question = getQuestion(sessionAttributes.deck, sessionAttributes.currentQuestionId);
 
         return handlerInput.responseBuilder
-            .speak()
+            .speak(question)
             .getResponse();
     }
 }
