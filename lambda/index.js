@@ -10,6 +10,10 @@ const axios = require('axios').default;
 
 const BASE_URL = "https://werenotreallystrangers.online/api/shuffle";
 
+async function getQuestion(deck, level, index) {
+    return deck[levels[level][index]].question;
+}
+
 const LaunchRequestHandler = {
     canHandle(handlerInput) {
         return Alexa.getRequestType(handlerInput.requestEnvelope) === 'LaunchRequest';
@@ -38,17 +42,12 @@ const MainDeckIntentHandler = {
             currentLevel: 0,
             currentQuestionInLevel: 0,
         }
-        
-        const sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
 
-        sessionAttributes.deck = deck;
-        sessionAttributes.levels = levels;
-        sessionAttributes.state = state;
-
+        let sessionAttributes = handlerInput.attributesManager.getSessionAttributes();
+        sessionAttributes = { ...sessionAttributes, deck, levels, state };
         handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
-        await handlerInput.attributesManager.savePersistentAttributes();
-
-        const question = deck[levels[state.currentLevel][state.currentQuestionInLevel]].question;
+        
+        const question = getQuestion(deck, state.currentLevel);
         const speakOutput = 'You are playing the main deck! ' + question;
 
         return handlerInput.responseBuilder
