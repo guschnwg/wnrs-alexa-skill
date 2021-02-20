@@ -67,7 +67,7 @@ const AnswerIntentHandler = {
             && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AnswerIntent';
     },
     handle(handlerInput) {
-        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer')
+        const answer = Alexa.getSlotValue(handlerInput.requestEnvelope, 'answer');
 
         return handlerInput.responseBuilder
             .speak(answer)
