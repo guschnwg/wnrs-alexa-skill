@@ -19,7 +19,7 @@ const LaunchRequestHandler = {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest";
   },
   handle(handlerInput) {
-    const speakOutput = "Welcome, you can say: open we are not really stragers and play main deck, to start.";
+    const speakOutput = "Welcome, you can say: open we are not really strangers and play main deck, to start.";
 
     return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
   },
@@ -146,7 +146,7 @@ const CancelAndStopIntentHandler = {
     );
   },
   handle(handlerInput) {
-    const speakOutput = "Goodbye!";
+    const speakOutput = "WNRS: Goodbye!";
 
     return handlerInput.responseBuilder.speak(speakOutput).getResponse();
   },
@@ -164,7 +164,7 @@ const FallbackIntentHandler = {
     );
   },
   handle(handlerInput) {
-    const speakOutput = "Sorry, I don't know about that. Please try again.";
+    const speakOutput = "WNRS: Sorry, I don't know about that. Please try again.";
 
     return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
   },
@@ -195,7 +195,7 @@ const IntentReflectorHandler = {
   },
   handle(handlerInput) {
     const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
-    const speakOutput = `You just triggered ${intentName}`;
+    const speakOutput = `WNRS: You just triggered ${intentName}`;
 
     return (
       handlerInput.responseBuilder
