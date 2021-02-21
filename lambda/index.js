@@ -103,10 +103,12 @@ const YesIntentHandler = {
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
     await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
-    const question =
-      "Okay, here we go, next question: " + getQuestion(sessionAttributes.deck, sessionAttributes.currentQuestionId);
+    const speakOutput =
+      "Okay, here we go, next question: " +
+      getQuestion(sessionAttributes.deck, sessionAttributes.currentQuestionId) +
+      "You answer is...";
 
-    return handlerInput.responseBuilder.speak(question).getResponse();
+    return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
   },
 };
 
