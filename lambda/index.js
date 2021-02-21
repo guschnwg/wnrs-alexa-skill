@@ -19,7 +19,7 @@ const LaunchRequestHandler = {
     return Alexa.getRequestType(handlerInput.requestEnvelope) === "LaunchRequest";
   },
   handle(handlerInput) {
-    const speakOutput = "Welcome, you can say Hello or Help. Which would you like to try?";
+    const speakOutput = "Welcome, you can say: open we are not really stragers and play main deck, to start.";
 
     return handlerInput.responseBuilder.speak(speakOutput).reprompt(speakOutput).getResponse();
   },
