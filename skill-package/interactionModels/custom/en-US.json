@@ -1,0 +1,62 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "we are not really strangers",
+      "intents": [
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "MainDeckIntent",
+          "slots": [],
+          "samples": [
+            "play main deck",
+            "og deck",
+            "original game deck",
+            "original deck",
+            "main deck"
+          ]
+        },
+        {
+          "name": "AnswerIntent",
+          "slots": [
+            {
+              "name": "answer",
+              "type": "AMAZON.SearchQuery"
+            }
+          ],
+          "samples": [
+            "My answer is {answer}"
+          ]
+        },
+        {
+          "name": "AMAZON.YesIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NoIntent",
+          "samples": []
+        }
+      ],
+      "types": []
+    }
+  },
+  "version": "10"
+}
