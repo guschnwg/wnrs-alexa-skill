@@ -76,7 +76,9 @@ const AnswerIntentHandler = {
     handlerInput.attributesManager.setSessionAttributes(sessionAttributes);
     await handlerInput.attributesManager.setPersistentAttributes(sessionAttributes);
 
-    return handlerInput.responseBuilder.speak("Do you want to keep playing? Yes or No").getResponse();
+    const speakOutput = "Do you want to keep playing? Yes or No";
+
+    return handlerInput.responseBuilder.speak(speakOutput).reprompt().getResponse();
   },
 };
 
